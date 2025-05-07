@@ -17,46 +17,30 @@ public class Students {
     @Column(nullable = false)
     private String password;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @PrePersist
     public void encryptPassword() {
         this.password = new BCryptPasswordEncoder().encode(this.password);
     }
 
-    @Override
-    public String toString() {
-        return "Students [id=" + id + ", username=" + username + ", password=" + password + "]";
-    }
+    public Students() {}
 
-    public Students() {
-    }
-
-    public Students(int id, String username, String password, String role) {
+    public Students(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    @Override
+    public String toString() {
+        return "Students [id=" + id + ", username=" + username + "]";
     }
 }
